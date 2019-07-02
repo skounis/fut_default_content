@@ -1,0 +1,12 @@
+name: Default Content for Futurium D8
+description: Define Default content for export.
+package: Custom
+type: module
+version: 1.0
+core: 8.x
+dependencies:
+  - default_content
+
+default_content:
+  file:    
+    - 99ff1680-21a8-448f-8682-7b7b6bf0f7e6

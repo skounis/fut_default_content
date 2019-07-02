@@ -1,0 +1,9 @@
+{
+    "name": "skounis/fut_default_content",
+    "description": "Default Content for Futurium D8",
+    "type": "drupal-module",
+    "minimum-stability": "dev",
+    "require": {
+        "drupal/default_content": "1.*"
+    }
+}
