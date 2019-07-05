@@ -1,0 +1,36 @@
+<?php
+
+function fut_default_content_install() {
+
+  $result = _copy_files();
+
+  $message = 'Fut Default Content module is installed. The related assets are copied: @result ';
+  \Drupal::logger('ut_default_content')->notice($message,
+    array(
+      '@result' => $result
+    )
+  );
+}
+
+
+function _copy_files() {
+  $filesystem = \Drupal::service('file_system');
+
+  $filename = 'default-user-avatar.png';
+  $folder = 'default_images/';
+
+
+  $path = drupal_get_path('module', 'fut_default_content');
+  $path = $filesystem->realpath($path);
+
+  $source = $path . '/files/' . $folder . $filename;
+  $targetPath = 'public://' . $folder;
+  $target = $targetPath . $filename;
+
+  if ($filesystem->prepareDirectory($targetPath, \Drupal\Core\File\FileSystemInterface::EXISTS_REPLACE)) {
+    $filesystem->copy($source, $target, \Drupal\Core\File\FileSystemInterface::EXISTS_REPLACE);
+    return true;
+  };
+
+  return false;
+}
